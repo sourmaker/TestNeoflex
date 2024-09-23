@@ -1,6 +1,8 @@
 package com.neoflexbegin.service;
 
 import com.neoflexbegin.models.Vacation;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -8,24 +10,21 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-@Component
+@NoArgsConstructor
+@AllArgsConstructor
 @Service
 public class VacationService {
-
 
     private final int WORK_DAY_IN_YEAR = 317;
 
 
     public String calculateVacationPay(Vacation vacation) {
-        return   String.format("%.2f",vacation.getSalary() / (double)WORK_DAY_IN_YEAR * vacation.getVacation());
+        return String.format("%.2f", vacation.getSalary() / (double) WORK_DAY_IN_YEAR * vacation.getVacation());
     }
 
-
     public LocalDate dateAfterHolidays(LocalDate date, Vacation vacation) {
-        int holiday = 0;
-
-        for(int i=0;i<vacation.getVacation();){
-            if(calendarList.contains(date)) {
+        for (int i = 0; i < vacation.getVacation(); ) {
+            if (calendarList.contains(date)) {
                 date = date.plusDays(1);
             } else {
                 date = date.plusDays(1);
@@ -35,7 +34,7 @@ public class VacationService {
         return date;
     }
 
-    public final List<LocalDate> calendarList = Arrays.asList(
+    public List<LocalDate> calendarList = Arrays.asList(
             LocalDate.of(2024, 1, 1),
             LocalDate.of(2024, 1, 2),
             LocalDate.of(2024, 1, 3),

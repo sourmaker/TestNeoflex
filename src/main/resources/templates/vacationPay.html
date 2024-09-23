@@ -8,13 +8,12 @@
 <div th:object="${title}">
     <p th:text="'Ваша зарплата: ' + *{getSalary()}" />
     <p th:text="'Дни отпуска: ' + *{getVacation()}" />
-    <p th:text="'Выплачено отпускных: ' + *{getSalary()}/*{getVacation()}"></p>
     <p th:text="'Выплачено отпускных(расчет по формуле) ' + ${count}"></p>
     <p th:text="'Дата начала отпуска: ' + ${dateFrom}"></p>
     <p th:text="'Отпуск заканчивается: ' + ${dateAfter}"></p>
 
 
-    <a href="/">Рассчитать отпускные заново</a>
+    <a href="/calculate">Рассчитать отпускные заново</a>
 </div>
 </body>
 </html>

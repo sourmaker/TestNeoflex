@@ -6,12 +6,12 @@
 </head>
 <body>
     <h1>Расчет отпускных с учетом праздников и выходных на 2024 год</h1>
-    <form action="#", th:action="@{/}" th:object="${title}" method="post">
-        <p>Зарплата за 12 месяцев: <input type="text" th:field="*{salary}"/></p>
-        <p>Количество дней отпуска: <input type="text" th:field="*{vacation}"/></p>
+    <form action="/" th:action="@{/}" th:object="${title}" method="post">
+        <p>Зарплата за 12 месяцев: <input type="number"  th:required="true" th:min="1" th:value="1" name="salary", id="salary"/></p>
+        <p>Количество дней отпуска: <input type="number" th:required="true" th:min="1" value="1" name="vacation", id="vacation"/></p>
         <p>
             <label for="date">Дата начала отпуска: </label>
-            <input type="date" id="date" th:field="*{date}"/>
+            <input type="date" th:required="true" id="date" th:field="*{date}"/>
         </p>
         <p><input type="Submit" value="Рассчитать"/> </p>
     </form>
