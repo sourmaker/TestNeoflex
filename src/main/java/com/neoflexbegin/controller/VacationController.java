@@ -13,7 +13,7 @@ public class VacationController {
     public String calculateVacation(@ModelAttribute VacationService vacationService, Model model) {
         model.addAttribute("title", vacationService);
         model.addAttribute("dateFrom", vacationService.getDate());
-        model.addAttribute("dateAfter", vacationService.dateAfterHolidays());
+        model.addAttribute("dateAfter", vacationService.dateAfterHolidays2());
         model.addAttribute("count", vacationService.calculateVacationPay());
 
         return "vacationPay";
