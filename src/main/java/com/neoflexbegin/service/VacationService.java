@@ -1,29 +1,43 @@
 package com.neoflexbegin.service;
 
-import com.neoflexbegin.models.Vacation;
+
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
+import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Service
 public class VacationService {
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date;
+
+    private final int MONTH_COUNT = 12;
+    private final double AVG_DAY_IN_MONTH = 29.3;
+
+    private double salary;
+    private int vacation;
+
     private final int WORK_DAY_IN_YEAR = 317;
 
 
-    public String calculateVacationPay(Vacation vacation) {
-        return String.format("%.2f", vacation.getSalary() / (double) WORK_DAY_IN_YEAR * vacation.getVacation());
+    public String calculateVacationPay() {
+        return String.format("%.2f", getSalary() / (double) WORK_DAY_IN_YEAR * getVacation());
     }
 
-    public LocalDate dateAfterHolidays(LocalDate date, Vacation vacation) {
-        for (int i = 0; i < vacation.getVacation(); ) {
+    public LocalDate dateAfterHolidays() {
+        for (int i = 0; i < getVacation(); ) {
             if (calendarList.contains(date)) {
                 date = date.plusDays(1);
             } else {
