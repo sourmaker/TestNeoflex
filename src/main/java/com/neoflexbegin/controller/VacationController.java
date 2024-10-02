@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class VacationController {
 
-    @PostMapping("/")
-    public String calculateVacation(@ModelAttribute VacationService vacationService, Model model) {
-        model.addAttribute("title", vacationService);
+    @PostMapping("/calculate")
+    public String calculateVacation(VacationService vacationService, Model model) {
+        model.addAttribute("service", vacationService);
         model.addAttribute("dateFrom", vacationService.getDate());
         model.addAttribute("dateAfter", vacationService.dateAfterHolidays2());
         model.addAttribute("count", vacationService.calculateVacationPay());
